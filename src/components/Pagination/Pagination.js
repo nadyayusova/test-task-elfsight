@@ -62,12 +62,15 @@ function Pagination(props) {
 
       {props.pageNumber < props.maxPage - 1 && <span>..</span>}
 
-      <PaginationButton
-        onClick={setLast}
-        data-active={props.pageNumber === props.maxPage ? "" : null}
-        disabled={props.pageNumber === props.maxPage ? "disabled" : ""}>
-        {props.maxPage}
-      </PaginationButton>
+      {
+        props.maxPage > 1 &&
+        <PaginationButton
+          onClick={setLast}
+          data-active={props.pageNumber === props.maxPage ? "" : null}
+          disabled={props.pageNumber === props.maxPage ? "disabled" : ""}>
+          {props.maxPage}
+        </PaginationButton>
+      }
 
       <PaginationButton
         onClick={next}
