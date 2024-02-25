@@ -1,3 +1,4 @@
+import {useEffect, useState} from "react";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import styled from "styled-components";
@@ -19,10 +20,27 @@ const AppWrapper = styled.div`
 `;
 
 function App() {
+  // const [pageNumber, setPageNumber] = useState(1);
+  const [fetchedData, setFetchedData] = useState([]);
+  const {info, results} = fetchedData;
+
+  // let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}`;
+  let api = 'https://rickandmortyapi.com/api/character';
+
+  const fetchData = async () => {
+    const response = await fetch(api);
+    const data = await response.json();
+    setFetchedData(data);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [api]);
+
   return (
     <AppWrapper>
       <Header />
-      <Main />
+      <Main fetchResults={results} />
     </AppWrapper>
   );
 }

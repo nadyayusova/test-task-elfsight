@@ -16,17 +16,14 @@ const StyledCards = styled.div`
   }
 `;
 
-function Cards() {
+function Cards({fetchResults}) {
   return (
     <StyledCards>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {
+        fetchResults
+          ? fetchResults.map((item) => <Card key={item.id} cardData={item} />)
+          : 'Not Found'
+      }
     </StyledCards>
   );
 }

@@ -7,12 +7,12 @@ const StyledMain = styled.main`
   padding: 20px 0;
 `;
 
-function Main() {
+function Main(props) {
   return (
     <StyledMain>
       <Container display="flex" direction="row" gap="20px">
         <Filter />
-        <Cards />
+        <Cards fetchResults={props.fetchResults} />
       </Container>
     </StyledMain>
   );
