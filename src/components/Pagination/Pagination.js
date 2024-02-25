@@ -53,14 +53,14 @@ function Pagination(props) {
         1
       </PaginationButton>
 
-      <span>..</span>
+      {props.pageNumber > 2 && <span>..</span>}
 
       {
         (props.pageNumber !== 1 && props.pageNumber !== props.maxPage) &&
         <PaginationButton data-center disabled>{props.pageNumber}</PaginationButton>
       }
 
-      {(props.pageNumber !== 1 && props.pageNumber !== props.maxPage) && <span>..</span>}
+      {props.pageNumber < props.maxPage - 1 && <span>..</span>}
 
       <PaginationButton
         onClick={setLast}

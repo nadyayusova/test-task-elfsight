@@ -27,15 +27,13 @@ const StyledPaginationButton = styled.button`
   }
 
   &[data-active] {
-    color: inherit;
-    outline: 2px solid grey;
-    outline-offset: -2px;
+    color: white;
+    background-color: #363636;
   }
 
   &[data-center] {
-    color: inherit;
-    outline: 2px solid grey;
-    outline-offset: -2px;
+    color: white;
+    background-color: #363636;
   }
 `;
 
