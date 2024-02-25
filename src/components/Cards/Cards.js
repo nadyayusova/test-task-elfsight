@@ -4,7 +4,7 @@ import styled from "styled-components";
 const StyledCards = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 20px;
   width: 100%;
 
   @media (max-width: 1023px) {

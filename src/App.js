@@ -20,12 +20,11 @@ const AppWrapper = styled.div`
 `;
 
 function App() {
-  // const [pageNumber, setPageNumber] = useState(1);
-  const [fetchedData, setFetchedData] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [fetchedData, setFetchedData] = useState({});
   const {info, results} = fetchedData;
 
-  // let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}`;
-  let api = 'https://rickandmortyapi.com/api/character';
+  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}`;
 
   const fetchData = async () => {
     const response = await fetch(api);
@@ -40,7 +39,14 @@ function App() {
   return (
     <AppWrapper>
       <Header />
-      <Main fetchResults={results} />
+      {
+        (info && results) &&
+        <Main fetchResults={results} pageNumber={pageNumber} setPageNumber={setPageNumber} maxPage={info.pages} />
+      }
+      {
+        (!info || !results) &&
+        <p style={{textAlign: 'center'}}>Loading...</p>
+      }
     </AppWrapper>
   );
 }
