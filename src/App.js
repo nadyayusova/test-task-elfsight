@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
+import Empty from "./components/Main/Empty";
 import styled from "styled-components";
 
 const AppWrapper = styled.div`
@@ -21,10 +22,11 @@ const AppWrapper = styled.div`
 
 function App() {
   const [pageNumber, setPageNumber] = useState(1);
+  const [search, setSearch] = useState('');
   const [fetchedData, setFetchedData] = useState({});
-  const {info, results} = fetchedData;
+  const {info, results, error} = fetchedData;
 
-  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}`;
+  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}`;
 
   const fetchData = async () => {
     const response = await fetch(api);
@@ -38,14 +40,14 @@ function App() {
 
   return (
     <AppWrapper>
-      <Header />
+      <Header setSearch={setSearch} setPageNumber={setPageNumber} />
       {
-        (info && results) &&
-        <Main fetchResults={results} pageNumber={pageNumber} setPageNumber={setPageNumber} maxPage={info.pages} />
+        ((info && results) || error) &&
+        <Main fetchResults={results} pageNumber={pageNumber} setPageNumber={setPageNumber} pageInfo={info} notFound={error} />
       }
       {
-        (!info || !results) &&
-        <p style={{textAlign: 'center'}}>Loading...</p>
+        ((!info || !results) && !error) &&
+        <Empty text={'Loading...'} />
       }
     </AppWrapper>
   );

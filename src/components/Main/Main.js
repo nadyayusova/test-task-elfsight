@@ -13,14 +13,31 @@ const StyledMain = styled.main`
 `;
 
 function Main(props) {
+  const {
+    fetchResults,
+    pageNumber,
+    setPageNumber,
+    pageInfo,
+    notFound,
+  } = props;
+
   return (
     <StyledMain>
       <Container display="flex" direction="row" gap="20px">
         <Filter />
-        <div className="cards-wrapper">
-          <Cards fetchResults={props.fetchResults} />
-          <Pagination pageNumber={props.pageNumber} setPageNumber={props.setPageNumber} maxPage={props.maxPage} />
-        </div>
+
+        {
+          fetchResults &&
+          <div className="cards-wrapper">
+            <Cards fetchResults={fetchResults} />
+            <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} maxPage={pageInfo.pages} />
+          </div>
+        }
+
+        {
+          notFound &&
+          <div className="cards-wrapper">Not Found</div>
+        }
       </Container>
     </StyledMain>
   );

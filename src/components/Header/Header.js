@@ -1,4 +1,4 @@
-import Search from "./Search";
+import Search from "../Search/Search";
 import Container from "../Container";
 import styled from "styled-components";
 
@@ -13,12 +13,12 @@ const StyledHeader = styled.header`
   }
 `;
 
-function Header() {
+function Header({setSearch, setPageNumber}) {
   return (
     <StyledHeader>
       <Container display="flex" direction="column" gap="20px">
         <h1>Rick and Morty API Demo</h1>
-        <Search />
+        <Search setSearch={setSearch} setPageNumber={setPageNumber} />
       </Container>
     </StyledHeader>
   );
