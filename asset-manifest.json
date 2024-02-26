@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/test-task-elfsight/static/js/main.8fe859d2.js",
+    "main.js": "/test-task-elfsight/static/js/main.49688fe5.js",
     "index.html": "/test-task-elfsight/index.html",
-    "main.8fe859d2.js.map": "/test-task-elfsight/static/js/main.8fe859d2.js.map"
+    "main.49688fe5.js.map": "/test-task-elfsight/static/js/main.49688fe5.js.map"
   },
   "entrypoints": [
-    "static/js/main.8fe859d2.js"
+    "static/js/main.49688fe5.js"
   ]
 }
