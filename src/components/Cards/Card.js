@@ -1,4 +1,4 @@
-import CardImage from "./Image";
+import CardImage from "./CardImage";
 import styled from "styled-components";
 
 const StyledCard = styled.div`
@@ -24,16 +24,18 @@ const StyledCard = styled.div`
   }
 `;
 
-function Card({cardData}) {
+function Card({cardData, index, setCardId, setShowModal}) {
+  const cardClickHandler = () => {
+    setCardId(index);
+    setShowModal(true);
+  };
+
   return (
-    <StyledCard>
+    <StyledCard onClick={() => cardClickHandler()}>
       <CardImage imageUrl={cardData.image} name={cardData.name} />
       <ul>
-        <li><b>Name:</b> {cardData.name || '-'}</li>
-        <li><b>Status:</b> {cardData.status || '-'}</li>
-        <li><b>Species:</b> {cardData.species || '-'}</li>
-        <li><b>Type:</b> {cardData.type || '-'}</li>
-        <li><b>Gender:</b> {cardData.gender || '-'}</li>
+        <li><b>{cardData.name || '-'}</b></li>
+        <li>Status: {cardData.status || '-'}</li>
       </ul>
     </StyledCard>
   );

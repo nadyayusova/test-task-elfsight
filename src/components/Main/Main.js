@@ -32,6 +32,8 @@ function Main(props) {
     setSpecies,
     gender,
     setGender,
+    setCardId,
+    setShowModal,
   } = props;
 
   return (
@@ -49,7 +51,10 @@ function Main(props) {
         {
           fetchResults &&
           <div className="cards-wrapper">
-            <Cards fetchResults={fetchResults} />
+            <Cards
+              fetchResults={fetchResults}
+              setCardId={setCardId}
+              setShowModal={setShowModal} />
             <Pagination
               pageNumber={pageNumber}
               setPageNumber={setPageNumber}

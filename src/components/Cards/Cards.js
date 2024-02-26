@@ -16,12 +16,20 @@ const StyledCards = styled.div`
   }
 `;
 
-function Cards({fetchResults}) {
+function Cards({fetchResults, setCardId, setShowModal}) {
   return (
     <StyledCards>
       {
         fetchResults
-          ? fetchResults.map((item) => <Card key={item.id} cardData={item} />)
+          ? fetchResults.map(
+            (item, index) => (
+              <Card
+                key={item.id}
+                cardData={item}
+                index={index}
+                setCardId={setCardId}
+                setShowModal={setShowModal} />
+            ))
           : 'Not Found'
       }
     </StyledCards>
