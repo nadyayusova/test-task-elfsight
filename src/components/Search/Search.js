@@ -1,3 +1,4 @@
+import {useState, useRef} from "react";
 import styled from "styled-components";
 
 const StyledSearch = styled.div`
@@ -37,20 +38,68 @@ const StyledSearch = styled.div`
       max-width: 300px;
     }
   }
+
+  button {
+    display: block;
+    padding: 8px 15px;
+    font-size: inherit;
+    color: white;
+    background-color: #363636;
+    border: none;
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  @media (hover: hover) {
+    button:hover {
+      box-shadow: 0 0 6px 1px grey;
+    }
+  }
+
+  button:focus {
+    outline: none;
+    box-shadow: 0 0 6px 1px grey;
+  }
 `;
 
 function Search({setSearch, setPageNumber}) {
+  const [value, setValue] = useState('');
+  const btnRef = useRef();
+
+  const inputKeyDownHandler = (evt) => {
+    if (evt.key === 'Enter') {
+      btnRef.current.focus();
+      return;
+    }
+  };
+
+  const inputChangeHandler = (evt) => {
+    setValue(evt.target.value)
+    if (evt.target.value === '') {
+      setSearch('');
+      setPageNumber(1);
+    }
+  };
+
+  const btnClickHandler = (evt) => {
+    evt.preventDefault();
+    setSearch(value);
+    setPageNumber(1);
+  };
+
   return (
     <StyledSearch>
       <form>
         <div className="form-content">
           <input
-            onChange={(evt) => {
-              setSearch(evt.target.value);
-              setPageNumber(1);
-            }}
-            type="text"
+            onKeyDown={inputKeyDownHandler}
+            onChange={inputChangeHandler}
+            value={value}
+            type="search"
             placeholder="Search by Name" />
+
+          <button type="submit" ref={btnRef} onClick={btnClickHandler}>Search</button>
         </div>
       </form>
     </StyledSearch>

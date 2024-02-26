@@ -38,9 +38,18 @@ function App() {
   let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&species=${species}&gender=${gender}&type=${type}`;
 
   const fetchData = async () => {
-    const response = await fetch(api);
-    const data = await response.json();
-    setFetchedData(data);
+    try {
+      const response = await fetch(api);
+
+      if (response.ok) {
+        const data = await response.json();
+        setFetchedData(data);
+      } else {
+        throw new Error('Data not found');
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   useEffect(() => {
