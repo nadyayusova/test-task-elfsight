@@ -10,6 +10,13 @@ const StyledMain = styled.main`
   .cards-wrapper {
     width: 100%;
   }
+
+  @media (max-width: 767px) {
+    .cards-wrapper {
+      max-width: 300px;
+      margin: 20px auto 0;
+    }
+  }
 `;
 
 function Main(props) {
@@ -19,18 +26,34 @@ function Main(props) {
     setPageNumber,
     pageInfo,
     notFound,
+    status,
+    setStatus,
+    species,
+    setSpecies,
+    gender,
+    setGender,
   } = props;
 
   return (
     <StyledMain>
-      <Container display="flex" direction="row" gap="20px">
-        <Filter />
+      <Container display="flex" direction="row" gap="40px">
+        <Filter
+          status={status}
+          setStatus={setStatus}
+          species={species}
+          setSpecies={setSpecies}
+          gender={gender}
+          setGender={setGender}
+          setPageNumber={setPageNumber} />
 
         {
           fetchResults &&
           <div className="cards-wrapper">
             <Cards fetchResults={fetchResults} />
-            <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} maxPage={pageInfo.pages} />
+            <Pagination
+              pageNumber={pageNumber}
+              setPageNumber={setPageNumber}
+              maxPage={pageInfo.pages} />
           </div>
         }
 

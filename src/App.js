@@ -23,10 +23,14 @@ const AppWrapper = styled.div`
 function App() {
   const [pageNumber, setPageNumber] = useState(1);
   const [search, setSearch] = useState('');
+  const [status, setStatus] = useState('');
+  const [species, setSpecies] = useState('');
+  const [gender, setGender] = useState('');
+
   const [fetchedData, setFetchedData] = useState({});
   const {info, results, error} = fetchedData;
 
-  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}`;
+  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&species=${species}&gender=${gender}`;
 
   const fetchData = async () => {
     const response = await fetch(api);
@@ -43,7 +47,18 @@ function App() {
       <Header setSearch={setSearch} setPageNumber={setPageNumber} />
       {
         ((info && results) || error) &&
-        <Main fetchResults={results} pageNumber={pageNumber} setPageNumber={setPageNumber} pageInfo={info} notFound={error} />
+        <Main
+          fetchResults={results}
+          pageNumber={pageNumber}
+          setPageNumber={setPageNumber}
+          pageInfo={info}
+          notFound={error}
+          status={status}
+          setStatus={setStatus}
+          species={species}
+          setSpecies={setSpecies}
+          gender={gender}
+          setGender={setGender} />
       }
       {
         ((!info || !results) && !error) &&

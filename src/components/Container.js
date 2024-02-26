@@ -10,11 +10,16 @@ const StyledContainer = styled.div`
   padding: 0 120px;
 
   @media (max-width: 1159px) {
-      padding: 0 40px;
+    padding: 0 40px;
+  }
+
+  @media (max-width: 1023px) {
+    gap: 20px;
   }
 
   @media (max-width: 767px) {
-      padding: 0 20px;
+    flex-direction: column;
+    padding: 0 20px;
   }
 `;
 
