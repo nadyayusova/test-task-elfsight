@@ -27,6 +27,7 @@ function App() {
   const [status, setStatus] = useState('');
   const [species, setSpecies] = useState('');
   const [gender, setGender] = useState('');
+  const [type, setType] = useState('');
 
   const [showModal, setShowModal] = useState(false);
   const [cardId, setCardId] = useState(0);
@@ -34,7 +35,7 @@ function App() {
   const [fetchedData, setFetchedData] = useState({});
   const {info, results, error} = fetchedData;
 
-  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&species=${species}&gender=${gender}`;
+  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&species=${species}&gender=${gender}&type=${type}`;
 
   const fetchData = async () => {
     const response = await fetch(api);
@@ -63,6 +64,8 @@ function App() {
           setSpecies={setSpecies}
           gender={gender}
           setGender={setGender}
+          type={type}
+          setType={setType}
           setCardId={setCardId}
           setShowModal={setShowModal} />
       }

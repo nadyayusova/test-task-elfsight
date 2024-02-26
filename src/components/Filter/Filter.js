@@ -1,6 +1,7 @@
 import Gender from "./Categories/Gender";
 import Species from "./Categories/Species";
 import Status from "./Categories/Status";
+import Type from "./Categories/Type";
 import styled from "styled-components";
 
 const StyledFilter = styled.div`
@@ -44,11 +45,12 @@ const StyledFilter = styled.div`
   }
 `;
 
-function Filter({status, setStatus, species, setSpecies, gender, setGender, setPageNumber}) {
+function Filter({status, setStatus, species, setSpecies, gender, setGender, type, setType, setPageNumber}) {
   const clearFilter = () => {
     setStatus('');
     setSpecies('');
     setGender('');
+    setType('');
     setPageNumber(1);
   };
 
@@ -59,6 +61,7 @@ function Filter({status, setStatus, species, setSpecies, gender, setGender, setP
       <Status status={status} setStatus={setStatus} setPageNumber={setPageNumber} />
       <Species species={species} setSpecies={setSpecies} setPageNumber={setPageNumber} />
       <Gender gender={gender} setGender={setGender} setPageNumber={setPageNumber} />
+      <Type type={type} setType={setType} setPageNumber={setPageNumber} />
     </StyledFilter>
   );
 }

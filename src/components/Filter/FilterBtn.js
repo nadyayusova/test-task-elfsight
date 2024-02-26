@@ -33,6 +33,7 @@ const StyledFilterBtn = styled.div`
 `;
 
 function FilterBtn({task, param, setPageNumber, name, index, text}) {
+  const noSpacesText = text.replace(/ +/g, '%20');
   return (
     <StyledFilterBtn>
       <input
@@ -40,8 +41,8 @@ function FilterBtn({task, param, setPageNumber, name, index, text}) {
         type="radio"
         name={name}
         id={`${name}-${index}`}
-        value={text}
-        checked={param === text}
+        value={noSpacesText}
+        checked={param === noSpacesText}
         onChange={(evt) => {
           setPageNumber(1);
           task(evt.target.value);

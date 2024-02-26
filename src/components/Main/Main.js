@@ -32,6 +32,8 @@ function Main(props) {
     setSpecies,
     gender,
     setGender,
+    type,
+    setType,
     setCardId,
     setShowModal,
   } = props;
@@ -46,7 +48,9 @@ function Main(props) {
           setSpecies={setSpecies}
           gender={gender}
           setGender={setGender}
-          setPageNumber={setPageNumber} />
+          setPageNumber={setPageNumber}
+          type={type}
+          setType={setType} />
 
         {
           fetchResults &&
