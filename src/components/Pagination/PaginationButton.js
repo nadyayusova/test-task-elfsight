@@ -3,16 +3,16 @@ import styled from "styled-components";
 const StyledPaginationButton = styled.button`
   min-width: 40px;
   padding: 11px 10px 10px;
+  font-size: inherit;
   color: inherit;
   background-color: white;
   border: none;
   transition: box-shadow 0.3s ease;
   cursor: pointer;
+  user-select: none;
 
-  @media (max-width: 459px) {
-    min-width: 20px;
-    padding: 8px 5px;
-    font-size: 10px;
+  @media (max-width: 359px) {
+    min-width: 35px;
   }
 
   @media (hover: hover) {

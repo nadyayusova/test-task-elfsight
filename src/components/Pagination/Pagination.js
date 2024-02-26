@@ -11,6 +11,10 @@ const StyledPagination = styled.div`
   @media (max-width: 767px) {
     gap: 10px;
   }
+
+  & > span {
+    user-select: none;
+  }
 `;
 
 function Pagination(props) {
