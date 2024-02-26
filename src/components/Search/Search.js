@@ -39,6 +39,13 @@ const StyledSearch = styled.div`
     }
   }
 
+  input::-webkit-input-placeholder { color: grey; }
+  input:-moz-placeholder { color: grey; }
+  input::-moz-placeholder { color: grey; }
+  input:-ms-input-placeholder { color: grey; }
+  input::-ms-input-placeholder { color: grey; }
+  input::placeholder { color: grey; }
+
   button {
     display: block;
     padding: 8px 15px;

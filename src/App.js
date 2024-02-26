@@ -40,13 +40,8 @@ function App() {
   const fetchData = async () => {
     try {
       const response = await fetch(api);
-
-      if (response.ok) {
-        const data = await response.json();
-        setFetchedData(data);
-      } else {
-        throw new Error('Data not found');
-      }
+      const data = await response.json();
+      setFetchedData(data);
     } catch (err) {
       console.error(err);
     }
