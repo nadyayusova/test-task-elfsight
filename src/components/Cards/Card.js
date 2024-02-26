@@ -5,6 +5,7 @@ const StyledCard = styled.div`
   background-color: white;
   transition: box-shadow 0.3s ease;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 
   @media (hover: hover) {
     &:hover {
