@@ -10,6 +10,11 @@ const StyledModal = styled.dialog`
   max-width: 400px;
   padding: 15px;
 
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+
   & > ul {
     display: flex;
     flex-direction: column;
@@ -50,8 +55,10 @@ function Modal({showModal, setShowModal, cardId, fetchResults}) {
     if (!modalRef.current) return;
 
     if (showModal) {
+      document.body.style.overflow = 'hidden';
       modalRef.current.showModal();
     } else {
+      document.body.style.overflow = 'visible';
       modalRef.current.close();
     }
   }, [showModal]);
@@ -62,15 +69,17 @@ function Modal({showModal, setShowModal, cardId, fetchResults}) {
         fetchResults
           ? (
             <>
-              <CardImage imageUrl={fetchResults[cardId].image} name={fetchResults[cardId].name} />
+              <CardImage
+                imageUrl={fetchResults[cardId]?.image || ''}
+                name={fetchResults[cardId]?.name} />
               <ul>
-                <li><b>Name:</b> {fetchResults[cardId].name || '-'}</li>
-                <li><b>Status:</b> {fetchResults[cardId].status || '-'}</li>
-                <li><b>Species:</b> {fetchResults[cardId].species || '-'}</li>
-                <li><b>Type:</b> {fetchResults[cardId].type || '-'}</li>
-                <li><b>Gender:</b> {fetchResults[cardId].gender || '-'}</li>
-                <li><b>Location:</b> {fetchResults[cardId].location.name || '-'}</li>
-                <li><b>Origin:</b> {fetchResults[cardId].origin.name || '-'}</li>
+                <li><b>Name:</b> {fetchResults[cardId]?.name || '-'}</li>
+                <li><b>Status:</b> {fetchResults[cardId]?.status || '-'}</li>
+                <li><b>Species:</b> {fetchResults[cardId]?.species || '-'}</li>
+                <li><b>Type:</b> {fetchResults[cardId]?.type || '-'}</li>
+                <li><b>Gender:</b> {fetchResults[cardId]?.gender || '-'}</li>
+                <li><b>Location:</b> {fetchResults[cardId]?.location.name || '-'}</li>
+                <li><b>Origin:</b> {fetchResults[cardId]?.origin.name || '-'}</li>
               </ul>
             </>
           )
