@@ -13,7 +13,7 @@ const StyledMain = styled.main`
 function Empty({text}) {
   return (
     <StyledMain>
-      <Container display="flex" direction="row" gap="20px">
+      <Container data-display="flex" data-direction="row" data-gap="20px">
         <Filter />
 
         {

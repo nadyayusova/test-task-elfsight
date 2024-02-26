@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 const StyledContainer = styled.div`
-  display: ${props => props.display || 'block'};
-  flex-direction: ${props => props.direction || 'unset'};
-  gap: ${props => props.gap || '0'};
+  display: ${props => props['data-display'] || 'block'};
+  flex-direction: ${props => props['data-direction'] || 'unset'};
+  gap: ${props => props['data-gap'] || '0'};
   width: 100%;
   max-width: 1680px;
   margin: 0 auto;

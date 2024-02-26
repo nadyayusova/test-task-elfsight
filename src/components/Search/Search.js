@@ -42,7 +42,7 @@ const StyledSearch = styled.div`
 function Search({setSearch, setPageNumber}) {
   return (
     <StyledSearch>
-      <form action="">
+      <form>
         <div className="form-content">
           <input
             onChange={(evt) => {

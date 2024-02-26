@@ -40,7 +40,7 @@ function Main(props) {
 
   return (
     <StyledMain>
-      <Container display="flex" direction="row" gap="40px">
+      <Container data-display={"flex"} data-direction={"row"} data-gap={"40px"}>
         <Filter
           status={status}
           setStatus={setStatus}

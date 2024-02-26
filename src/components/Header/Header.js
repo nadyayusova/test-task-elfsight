@@ -16,7 +16,7 @@ const StyledHeader = styled.header`
 function Header({setSearch, setPageNumber}) {
   return (
     <StyledHeader>
-      <Container display="flex" direction="column" gap="20px">
+      <Container data-display="flex" data-direction="column" data-gap="20px">
         <h1>Rick and Morty API Demo</h1>
         <Search setSearch={setSearch} setPageNumber={setPageNumber} />
       </Container>
